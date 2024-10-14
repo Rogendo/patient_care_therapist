@@ -8,10 +8,25 @@ export const ChatWindow = () => {
     { type: 'bot', text: 'Hi, how can I help you?', user: 'Bot', time: new Date().toLocaleTimeString() },
   ]);
   const [loading, setLoading] = useState(false); // To show loading while waiting for the API
+  const [sessionId, setSessionId] = useState(null);  // Initialize sessionId
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputMessage(event.target.value);
   };
+  // Function to get or generate a session ID
+  const getSessionId = () => {
+    // Check if sessionId exists in local storage
+    let sessionId = localStorage.getItem('sessionId');
+  
+    // If no sessionId exists, create a new one
+    if (!sessionId) {
+      sessionId = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      localStorage.setItem('sessionId', sessionId);
+    }
+  
+    return sessionId;
+  };
+  
 
   const handleSendMessage = async () => {
     if (inputMessage.trim() === '') return; // Don't send empty messages
@@ -28,8 +43,20 @@ export const ChatWindow = () => {
     setLoading(true);
 
     try {
-      const data = { question: inputMessage }; // Prepare the data to be sent in the query
-      const apiResponse = await query(data);   // Call the query function
+      // Get or generate the session ID
+      // const sessionId = getSessionId();
+      const sessionId = 'session-1728850958711-zwnvvl0nm'
+      console.log("here is the session id:", sessionId)
+      const data = { 
+        question: inputMessage
+        // sessionId: sessionId || undefined // Only send the sessionId if it exists
+       }; // Prepare the data to be sent in the query
+      // const apiResponse = await query(data, sessionId);   // Call the query function
+      // Call the query function and pass the input message along with sessionId
+      const apiResponse = await query({
+        question: inputMessage,
+        sessionId: sessionId,  // Make sure to reuse existing sessionId
+      }, sessionId);
 
       const botResponse = {
         type: 'bot',
@@ -38,7 +65,9 @@ export const ChatWindow = () => {
         time: new Date().toLocaleTimeString(),
       };
 
+
       setMessages((prevMessages) => [...prevMessages, botResponse]);
+      
     } catch (error) {
       console.error('Error fetching bot response:', error);
       const errorMessage = {
@@ -52,7 +81,7 @@ export const ChatWindow = () => {
       setLoading(false);
     }
   };
-
+  
   // Handle the Enter key press
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
@@ -96,6 +125,7 @@ export const ChatWindow = () => {
             <span>...</span>
           </div>
         )}
+    
       </div>
 
       {/* Input field */}

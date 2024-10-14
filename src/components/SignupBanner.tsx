@@ -43,6 +43,7 @@ export function SigupBanner() {
 
     </Banner>
     // TODO : Session Id and saving the user sessions
+    // TODO : Implement Language translation Models
     // TODO : Speech recognition
     // TODO : Implement a Sentiment classifier
     // TODO : Save the chatsessions as txt files apart from the flowise dashboard
