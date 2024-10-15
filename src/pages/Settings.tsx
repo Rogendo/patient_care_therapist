@@ -7,6 +7,7 @@ interface Props {
 export function  Settings(){
     return (
         <div>
+            Settings Page
             {/* Add your settings page content here */}
         </div>
     )

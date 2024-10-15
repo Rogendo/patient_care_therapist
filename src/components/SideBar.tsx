@@ -49,7 +49,7 @@ export function SideBar() {
             </Sidebar.Item>
 
             <Sidebar.ItemGroup>
-              <Sidebar.Item href="#" icon={HiAdjustments}>
+              <Sidebar.Item href="/settings" icon={HiAdjustments}>
                 {isSidebarOpen && "Settings"}
                 {/* <Sidebar.Item as={Link} to="/settings" icon={HiAdjustments}> Link to Settings Page */}
               </Sidebar.Item>

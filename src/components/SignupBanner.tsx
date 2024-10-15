@@ -1,5 +1,5 @@
 "use client";
-import { Banner, Button } from "flowbite-react";
+import { Banner } from "flowbite-react";
 import { FaBookOpen } from "react-icons/fa";
 import { HiArrowRight, HiX } from "react-icons/hi";
 
