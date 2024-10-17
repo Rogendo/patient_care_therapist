@@ -4,11 +4,12 @@ async function query(data: any, sessionId: string): Promise<any> {
     // Make sure to pass the sessionId in each request
     const overrideConfig = {
         "sessionId": sessionId,
-        // Add any other config options you need
     };
+    const apiUrl = process.env.REACT_APP_API_URL; // Get API URL from env
+    const chatId = process.env.CHAT_ID; // Get CHAT_ID from env
 
     // Sending the chat request
-    const response = await axios.post(`http://localhost:3000/api/v1/prediction/deedebbd-4a01-49cf-9cc5-72daaf4e1a20`, data, {
+    const response = await axios.post(`${apiUrl}/api/v1/prediction/${chatId}/`, data, {
         headers: {
             "Authorization": "Bearer JWT",
             "Content-Type": "application/json",

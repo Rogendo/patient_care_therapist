@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Badge, Sidebar } from "flowbite-react";
 import { HiLogin, HiAdjustments, HiTable, HiViewBoards } from "react-icons/hi";
-import { DarkThemeToggle } from "flowbite-react";
 import { HiMenu, HiX } from "react-icons/hi"; // Import icons for toggle
 import Modal from './Modal';
 import NotFoundModal from './NotFound';

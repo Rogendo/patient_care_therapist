@@ -2,27 +2,15 @@ import React, { useState } from 'react';
 
 export function Settings() {
     const [theme, setTheme] = useState<string>('System');
-    const [showCode, setShowCode] = useState<boolean>(false);
     const [language, setLanguage] = useState<string>('Auto-detect');
 
     const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setTheme(e.target.value);
     };
 
-    const handleShowCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setShowCode(e.target.checked);
-    };
-
     const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setLanguage(e.target.value);
-    };
-
-    const handleArchiveChats = () => {
-        console.log('Archived all chats');
-        // Add your archive chat logic here
-    };
-
-    
+    };  
 
     const appVersion = "1.0.0"; // Set your app version here
 
@@ -35,6 +23,7 @@ export function Settings() {
                 <div className="mb-4">
                     <label className="block mb-1">Theme:</label>
                     <select
+                        title="Select Theme"
                         value={theme}
                         onChange={handleThemeChange}
                         className="w-200 p-2 bg-gray-700 border border-gray-300 rounded"
@@ -44,18 +33,11 @@ export function Settings() {
                         <option value="Dark">Dark</option>
                     </select>
                 </div>
-                {/* <div className="flex items-center mb-4">
-                    <input
-                        type="checkbox"
-                        checked={showCode}
-                        onChange={handleShowCodeChange}
-                        className="mr-2"
-                    />
-                    <label>Always show code when using data analyst</label>
-                </div> */}
+               
                 <div className="mb-4">
                     <label className="block mb-1">Language:</label>
                     <select
+                        title="Select Language"
                         value={language}
                         onChange={handleLanguageChange}
                         className="w-full p-2 bg-gray-700 border border-gray-600 rounded"

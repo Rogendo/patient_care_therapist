@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { SigupBanner } from "./SignupBanner"; // Assuming this is for additional functionality
 import query from '../utils/FlowiseAI';
+
 
 export const ChatWindow = () => {
   const [inputMessage, setInputMessage] = useState('');
@@ -8,25 +8,10 @@ export const ChatWindow = () => {
     { type: 'bot', text: 'Hi, how can I help you?', user: 'Bot', time: new Date().toLocaleTimeString() },
   ]);
   const [loading, setLoading] = useState(false); // To show loading while waiting for the API
-  const [sessionId, setSessionId] = useState(null);  // Initialize sessionId
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputMessage(event.target.value);
   };
-  // Function to get or generate a session ID
-  const getSessionId = () => {
-    // Check if sessionId exists in local storage
-    let sessionId = localStorage.getItem('sessionId');
-  
-    // If no sessionId exists, create a new one
-    if (!sessionId) {
-      sessionId = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem('sessionId', sessionId);
-    }
-  
-    return sessionId;
-  };
-  
 
   const handleSendMessage = async () => {
     if (inputMessage.trim() === '') return; // Don't send empty messages
@@ -47,10 +32,7 @@ export const ChatWindow = () => {
       // const sessionId = getSessionId();
       const sessionId = 'session-1728850958711-zwnvvl0nm'
       console.log("here is the session id:", sessionId)
-      const data = { 
-        question: inputMessage
-        // sessionId: sessionId || undefined // Only send the sessionId if it exists
-       }; // Prepare the data to be sent in the query
+      
       // const apiResponse = await query(data, sessionId);   // Call the query function
       // Call the query function and pass the input message along with sessionId
       const apiResponse = await query({
