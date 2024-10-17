@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 LABEL maintainer="Peter Rogendo"
 
-FROM node:22-alpine as build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
@@ -20,8 +20,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy built React app from the previous stage to NGINX's default public folder
-COPY --from=build /app/build /usr/share/nginx/html
-
+COPY --from=build /app/dist /usr/share/nginx/html
 # Expose port 80
 EXPOSE 80
 
