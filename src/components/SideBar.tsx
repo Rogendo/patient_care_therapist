@@ -3,12 +3,30 @@ import { Badge, Sidebar } from "flowbite-react";
 import { HiLogin, HiAdjustments, HiTable, HiViewBoards } from "react-icons/hi";
 import { DarkThemeToggle } from "flowbite-react";
 import { HiMenu, HiX } from "react-icons/hi"; // Import icons for toggle
-import { Link } from 'react-router-dom';
+import Modal from './Modal';
+import NotFoundModal from './NotFound';
 
 export function SideBar() {
   // State to manage the visibility of the sidebar
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [isNotFoundOpen, setNotFoundOpen] = useState(false);
 
+  const openNotFound = ()=>{
+    setNotFoundOpen(true);
+  }
+
+  const closeNotFound = ()=>{
+    setNotFoundOpen(false);
+
+  }
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   // Function to toggle the sidebar visibility
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -44,37 +62,46 @@ export function SideBar() {
               {/* Logic to list all available chat history for that specific user */}
             </Sidebar.Collapse>
 
-            <Sidebar.Item href="#" icon={HiLogin}>
+            <Sidebar.Item href="#" onClick={openNotFound} icon={HiLogin}>
               {isSidebarOpen && "Login"}
             </Sidebar.Item>
+            {/* 404 noModel component */}
+            <NotFoundModal isOpen={isNotFoundOpen} onClose={closeNotFound}>
+              
+            </NotFoundModal>
 
             <Sidebar.ItemGroup>
-              <Sidebar.Item href="/settings" icon={HiAdjustments}>
+            <Sidebar.Item href="#" onClick={openModal} icon={HiAdjustments}>
                 {isSidebarOpen && "Settings"}
-                {/* <Sidebar.Item as={Link} to="/settings" icon={HiAdjustments}> Link to Settings Page */}
-              </Sidebar.Item>
-              {isSidebarOpen && <DarkThemeToggle />}
+            </Sidebar.Item>
+
+            {/* Modal Component */}
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+              
+            </Modal>
             </Sidebar.ItemGroup>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
 
         <Sidebar.CTA>
-          <div className="mb-3 flex items-center">
-            <Badge color="warning">Beta</Badge>
-          </div>
-          {isSidebarOpen && (
-            <div className="mb-3 text-sm text-cyan-900 dark:text-gray-400">
-              Preview the new Patient Care lorem ispium lorem isum lorem isium lorem isium  With this, your health data is more comprehensive.
+          {/* <div className='mb-3 flex items-center bottom-1 '> */}
+            <div className="mb-3 flex items-center">
+              <Badge color="warning">Beta</Badge>
             </div>
-          )}
-          {isSidebarOpen && (
-            <a
-              className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-gray-400 dark:hover:text-gray-300"
-              href="#"
-            >
-              Patient Care Dashboard
-            </a>
-          )}
+            {isSidebarOpen && (
+              <div className="mb-3 text-sm text-cyan-900 dark:text-gray-400">
+                Available 24/7, it provides confidential support to help you maintain well-being or navigate difficult times, fitting seamlessly into your life.
+              </div>
+            )}
+            {isSidebarOpen && (
+              <a
+                className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-gray-400 dark:hover:text-gray-300"
+                href="#"
+              >
+                Patient Care
+              </a>
+            )}
+          {/* </div> */}
         </Sidebar.CTA>
       </Sidebar>
     </div>

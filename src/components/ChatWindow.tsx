@@ -139,16 +139,17 @@ export const ChatWindow = () => {
           onKeyDown={handleKeyDown} // Add keydown event handler
         />
         <button
-          className="ml-2 p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 flex items-center justify-center"
+          className="ml-2 p-2 bg-purple-200 text-white rounded-lg hover:bg-purple-400 flex items-center justify-center"
           onClick={handleSendMessage}
           disabled={loading}
           title="Send Message"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M1.5 10A1.5 1.5 0 000 11.5v2A1.5 1.5 0 001.5 15h.845L8.172 10.66 1.5 6H1.5z" />
-            <path d="M2 10.5V11h7.5L15 16.5 16.5 15l-8-8H2z" />
-            <path d="M19.11 1.84a1 1 0 00-1.41 0l-2.34 2.34L16.5 5h.586l-3.16 3.16a1 1 0 00-.15 1.5l2.34 2.34 2.34-2.34a1 1 0 000-1.41L19.11 1.84z" />
-          </svg>
+        <svg viewBox="0 0 1024 1024" className="icon w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+          <path d="M633.319 722.634L429 860.298V672.034z" fill="#26a269"></path>
+          <path d="M446.662 681.407l388.442 104.557L960 163.702l-159.706 99.826L64 723.667z" fill="#33d17a"></path>
+          <path d="M446.662 681.407L960 163.702l-159.706 99.826L64 723.667z" fill="#c061cb"></path>
+        </svg>
+  
         </button>
       </div>
 

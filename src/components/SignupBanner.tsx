@@ -17,20 +17,20 @@ export function SigupBanner() {
             </span>
           </a>
           <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
-            For more personlised Feeds, and saved chat history, sign up now!
+            For more personlised Feeds and access to medical professionals t your finertips, sign up with us now!
           </p>
         </div>
         
 
       <div className="flex shrink-0 items-center">
           <a
-            href="#"
+            href="https://www.patientcare.care/healthcoverage"
             className="mr-3 inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-900 hover:bg-gray-100 hover:text-cyan-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700">
             <FaBookOpen className="mr-2 h-4 w-4" />
             Learn more
           </a>
           <a
-            href="#"
+            href="https://www.patientcare.care/doctors"
             className="mr-2 inline-flex items-center justify-center rounded-lg bg-green-500 px-3 py-2 text-xs font-medium text-white hover:bg-green-200 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-500">
             Get started
             <HiArrowRight className="ml-2 h-4 w-4" />
@@ -42,6 +42,7 @@ export function SigupBanner() {
         </div>
 
     </Banner>
+    // TODO : Add google analytics to monitor how long your users visit with your site, how long they spend on the site, and also predict the traffic mONITOR YOUR CHATBOT TRAFFIC
     // TODO : Session Id and saving the user sessions
     // TODO : Implement Language translation Models
     // TODO : Speech recognition
