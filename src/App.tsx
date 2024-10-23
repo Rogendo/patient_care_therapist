@@ -16,12 +16,13 @@ function App() {
         </Routes>
         </Router>
 
-        <SideBar />
         {/* Stick the PatientCareBanner at the top */}
         <div className="left-100  w-900 absolute  top-2">
           
           <SigupBanner />
         </div>
+        <SideBar />
+
         {/* <ChatWindow /> */}
       </main>
     
