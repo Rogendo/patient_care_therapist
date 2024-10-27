@@ -15,12 +15,6 @@ function App() {
           <Route path="/settings" element={<Settings />} /> Route for Settings
         </Routes>
         </Router>
-
-        {/* Stick the PatientCareBanner at the top */}
-        <div className="left-100  w-900 absolute  top-2">
-          
-          <SigupBanner />
-        </div>
         <SideBar />
 
         {/* <ChatWindow /> */}
