@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import query from '../utils/FlowiseAI';
+import { BsArrowRight } from 'react-icons/bs';
+import { SigupBanner } from './SignupBanner';
 
 
 export const ChatWindow = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [messages, setMessages] = useState([
-    { type: 'bot', text: 'Hi, how can I help you?', user: 'Bot', time: new Date().toLocaleTimeString() },
+    { type: 'bot', text: 'Hi, how can I help you?', user: 'Therapist Bot', time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }), },
   ]);
   const [loading, setLoading] = useState(false); // To show loading while waiting for the API
 
@@ -20,7 +22,9 @@ export const ChatWindow = () => {
       type: 'user',
       text: inputMessage,
       user: 'User', // User's name
-      time: new Date().toLocaleTimeString(), // Current time
+      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      
+
     };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInputMessage(''); // Clear the input field
@@ -44,7 +48,7 @@ export const ChatWindow = () => {
         type: 'bot',
         text: apiResponse.text || "Sorry, I couldn't get a proper response.",
         user: 'Bot',
-        time: new Date().toLocaleTimeString(),
+        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       };
 
 
@@ -55,8 +59,8 @@ export const ChatWindow = () => {
       const errorMessage = {
         type: 'bot',
         text: "Sorry, I couldn't get a response. Try again later.",
-        user: 'Bot',
-        time: new Date().toLocaleTimeString(),
+        user: 'Therapist Bot',
+        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     } finally {
@@ -73,27 +77,29 @@ export const ChatWindow = () => {
   };
 
   return (
-    <div className="relative flex flex-col h-[80vh] w-[70vw] mx-auto bg-gray-300 border border-gray-300 rounded-lg shadow-lg">
+    <div className="relative  flex flex-col h-[95vh] lg:w-[70vw] ml-auto lg:mr-20 ">
+          <SigupBanner />
+
       {/* Chat window */}
       <div className="flex-1 p-4 overflow-y-auto">
         {messages.map((message, index) => (
           <div key={index} className={`mb-2 flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
             {message.type === 'user' ? (
               <div className="flex items-start">
-                <div className="p-3 max-w-lg rounded-lg bg-purple-500 text-white">
+                <div className="p-3 max-w-lg rounded-lg text-black">
                   {message.text}
-                  <div className="text-xs text-gray-200 mt-1">
+                  <div className="text-xs text-gray-500 mt-1">
                     <span>{message.user} • {message.time}</span>
                   </div>
                 </div>
-                <img src="therapist.png" alt="User" className="w-8 h-8 rounded-full ml-2" /> {/* User Icon */}
+                <img src="therapist.png" alt="User" className="w-8 h-8 rounded-full mt-4 ml-2" /> {/* User Icon */}
               </div>
             ) : (
               <div className="flex items-start">
-                <img src="therapist.jpg" alt="Bot" className="w-8 h-8 rounded-full mr-2" /> {/* Bot Icon */}
-                <div className="p-3 max-w-lg rounded-lg bg-gray-300 text-black">
+                <img src="therapist.jpg" alt="Bot" className="w-8 h-8 rounded-full mt-4 mr-2" /> {/* Bot Icon */}
+                <div className="p-3 max-w-lg  text-primary-green">
                   {message.text}
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-primary-purple mt-1">
                     <span>{message.user} • {message.time}</span>
                   </div>
                 </div>
@@ -111,34 +117,30 @@ export const ChatWindow = () => {
       </div>
 
       {/* Input field */}
-      <div className="flex items-center p-2 border-t border-gray-300 bg-white">
+      <div className="flex items-center shadow-xl border border-gray-400 rounded-full p-2 bg-gray-300 lg:w-[60%] mx-auto  ">
         <input
           type="text"
-          className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="flex-1 bg-inherit px-4 border-transparent focus:border-transparent focus:ring-0"
           placeholder="Type a message..."
           value={inputMessage}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown} // Add keydown event handler
         />
         <button
-          className="ml-2 p-2 bg-purple-200 text-white rounded-lg hover:bg-purple-400 flex items-center justify-center"
+          className=" p-2 w-10 h-10  text-white rounded-full bg-gradient-to-br from-primary-darkGreen to-primary-purple flex items-center justify-center"
           onClick={handleSendMessage}
           disabled={loading}
           title="Send Message"
-        >
-        <svg viewBox="0 0 1024 1024" className="icon w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-          <path d="M633.319 722.634L429 860.298V672.034z" fill="#26a269"></path>
-          <path d="M446.662 681.407l388.442 104.557L960 163.702l-159.706 99.826L64 723.667z" fill="#33d17a"></path>
-          <path d="M446.662 681.407L960 163.702l-159.706 99.826L64 723.667z" fill="#c061cb"></path>
-        </svg>
-  
+        > <BsArrowRight className='text-3xl'/>
         </button>
       </div>
 
       {/* Footer */}
-      <div className="p-4 text-center text-sm bg-gray-200 border-t border-gray-300">
+      {/* <div className="p-4 text-center text-sm bg-gray-200 border-t border-gray-300">
         <span>&copy; 2024 <a href="https://patientcare.care">Patient Care</a>. All rights reserved.</span>
-      </div>
+      </div> */}
+      <p className='mt-2 text-center p-2'>For access to a wide variety of health professionals <a target='_blank' href="https://www.patientcare.care/download" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>download</a> the Patient Care Customer App now!</p>
+      <p className=' text-center' >&copy; {new Date().getFullYear()} <a target='_blank' href="https://www.patientcare.care" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>Patient Care</a>. All rights reserved.</p>
     </div>
   );
 };
