@@ -140,7 +140,7 @@ export const ChatWindow = () => {
         <span>&copy; 2024 <a href="https://patientcare.care">Patient Care</a>. All rights reserved.</span>
       </div> */}
       <p className='mt-2 text-center p-2'>For access to a wide variety of health professionals <a target='_blank' href="https://www.patientcare.care/download" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>download</a> the Patient Care Customer App now!</p>
-      <p className=' text-center' >&copy; {new Date().getFullYear()} <a target='_blank' href="https://www.patientcare.care/download" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>Patient Care</a>. All rights reserved.</p>
+      <p className=' text-center' >&copy; {new Date().getFullYear()} <a target='_blank' href="https://www.patientcare.care" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>Patient Care</a>. All rights reserved.</p>
     </div>
   );
 };
