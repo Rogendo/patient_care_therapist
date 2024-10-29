@@ -47,7 +47,7 @@ export const ChatWindow = () => {
       const botResponse = {
         type: 'bot',
         text: apiResponse.text || "Sorry, I couldn't get a proper response.",
-        user: 'Bot',
+        user: 'Therapist Bot',
         time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       };
 

@@ -17,7 +17,7 @@ export function SigupBanner() {
             </span>
           </a> */}
           <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
-            For more personlised Feeds and access to medical professionals t your finertips, sign up with us now!
+            For more personlised Feeds and access to medical professionals at your finertips, sign up with us now!
           </p>
         </div>
         

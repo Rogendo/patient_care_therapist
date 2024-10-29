@@ -1,5 +1,4 @@
 import { SideBar } from "./components/SideBar";
-import { SigupBanner } from "./components/SignupBanner";
 import { ChatWindow }  from "./components/ChatWindow";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Settings } from "./pages/Settings"; // Adjust path as necessary

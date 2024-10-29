@@ -1,8 +1,9 @@
-import { Badge, CustomFlowbiteTheme, Sidebar } from "flowbite-react";
+import {  CustomFlowbiteTheme, Sidebar } from "flowbite-react";
 import {  BiSolidChat } from 'react-icons/bi';
 import { RiHistoryFill } from 'react-icons/ri';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { IoLogInSharp } from 'react-icons/io5';
+import { FiExternalLink } from "react-icons/fi";
 
 export function SideBar() {
   // State to manage the visibility of the sidebar
@@ -65,13 +66,13 @@ export function SideBar() {
             <a href="/" className='flex text-white font-bold text-xl items-center gap-2'>
               <BiSolidChat className='text-3xl'/> Chat 
             </a>
-            <a href="/history" className='flex text-white font-bold text-xl items-center gap-2'>
+            <a href="/" className='flex text-white font-bold text-xl items-center gap-2'>
               <RiHistoryFill className='text-3xl'/> History 
             </a>
-            <a href="/settings" className='flex text-white font-bold text-xl items-center gap-2'>
+            <a href="/" className='flex text-white font-bold text-xl items-center gap-2'>
               <GiSettingsKnobs className='text-3xl'/> Settings 
             </a>
-            <a href="/login" className='flex text-white font-bold text-xl items-center gap-2'>
+            <a href="/" className='flex text-white font-bold text-xl items-center gap-2'>
               <IoLogInSharp className='text-3xl'/> Login 
             </a>
 
@@ -106,9 +107,10 @@ export function SideBar() {
           className='mx-4'
         >
           {/* <div className='mb-3 flex items-center bottom-1 '> */}
-            <div className=" flex items-center">
-              <Badge className='bg-gradient-to-br from-primary-darkGreen to-primary-purple bg-clip-text text-xl'>Beta</Badge>
-            </div>
+            
+            <h1 className="font-monster bg-gradient-to-br from-primary-darkGreen to-primary-purple bg-clip-text text-transparent font-bold lg:text-xl  ">
+          Beta
+        </h1>
             
               <div className="mb-3 text-sm text-cyan-900 dark:text-gray-400">
                 Available 24/7, it provides confidential support to help you maintain well-being or navigate difficult times, fitting seamlessly into your life.
@@ -116,10 +118,10 @@ export function SideBar() {
             
             
               <a
-                className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-gray-400 dark:hover:text-gray-300"
-                href="#"
+                className="text-sm text-cyan-900 underline border flex gap-2 items-center hover:text-cyan-800 dark:text-gray-400 dark:hover:text-gray-300"
+                href="https://www.patientcare.care/"
               >
-                Patient Care
+                <span>Patient Care</span> <FiExternalLink />
               </a>
 
           {/* </div> */}
