@@ -32,17 +32,10 @@ export const ChatWindow = () => {
     setLoading(true);
 
     try {
-      // Get or generate the session ID
-      // const sessionId = getSessionId();
-      const sessionId = 'session-1728850958711-zwnvvl0nm'
-      console.log("here is the session id:", sessionId)
-      
-      // const apiResponse = await query(data, sessionId);   // Call the query function
-      // Call the query function and pass the input message along with sessionId
+      // Call the query function and pass the input message
       const apiResponse = await query({
         question: inputMessage,
-        sessionId: sessionId,  // Make sure to reuse existing sessionId
-      }, sessionId);
+      }, );
 
       const botResponse = {
         type: 'bot',
@@ -136,11 +129,8 @@ export const ChatWindow = () => {
       </div>
 
       {/* Footer */}
-      {/* <div className="p-4 text-center text-sm bg-gray-200 border-t border-gray-300">
-        <span>&copy; 2024 <a href="https://patientcare.care">Patient Care</a>. All rights reserved.</span>
-      </div> */}
-      <p className='mt-2 text-center p-2'>For access to a wide variety of health professionals <a target='_blank' href="https://www.patientcare.care/download" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>download</a> the Patient Care Customer App now!</p>
-      <p className=' text-center' >&copy; {new Date().getFullYear()} <a target='_blank' href="https://www.patientcare.care" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>Patient Care</a>. All rights reserved.</p>
+      <p className='mt-2 text-center p-2'>For access to a wide variety of health professionals <a target='_blank' rel="noopener" href="https://www.patientcare.care/download" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>download</a> the Patient Care Customer App now!</p>
+      <p className=' text-center' >&copy; {new Date().getFullYear()} <a target='_blank' rel="noopener" href="https://www.patientcare.care" className='text-primary-purple underline hover:no-underline hover:text-primary-green'>Patient Care</a>. All rights reserved.</p>
     </div>
   );
 };
