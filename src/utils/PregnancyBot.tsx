@@ -2,7 +2,7 @@ import axios from 'axios';
 
 async function query(data: any): Promise<any> {
    const apiUrl = process.env.REACT_APP_API_URL; // Get API URL from env
-   const chatId = process.env.MENTAL_HEALTH__BOT_CHAT_ID; 
+   const chatId = process.env.PREGNANCY_BOT_CHAT_ID; 
 
     // Sending the chat request
     const response = await axios.post(`${apiUrl}/api/v1/prediction/${chatId}/`, data, {

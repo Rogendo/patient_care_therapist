@@ -1,5 +1,5 @@
 import {  CustomFlowbiteTheme, Sidebar } from "flowbite-react";
-import {  BiSolidChat } from 'react-icons/bi';
+import {  BiSolidBookmarks, BiSolidChat } from 'react-icons/bi';
 import { RiHistoryFill } from 'react-icons/ri';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import { IoLogInSharp } from 'react-icons/io5';
@@ -63,6 +63,9 @@ export function SideBar() {
 
         <Sidebar.Items>
           <Sidebar.ItemGroup className='flex flex-col gap-5 mx-10'>
+          <a href="/explore-chatbots" className='flex text-white font-bold text-xl items-center gap-2'>
+              <BiSolidBookmarks className='text-3xl'/> Other Chatbots 
+            </a>
             <a href="/" className='flex text-white font-bold text-xl items-center gap-2'>
               <BiSolidChat className='text-3xl'/> Chat 
             </a>
@@ -75,7 +78,9 @@ export function SideBar() {
             <a href="/" className='flex text-white font-bold text-xl items-center gap-2'>
               <IoLogInSharp className='text-3xl'/> Login 
             </a>
-
+            <Sidebar.ItemGroup>
+              
+          </Sidebar.ItemGroup>
 
             {/* <Sidebar.Collapse icon={HiViewBoards} label={ "History"}> */}
               {/* Logic to list all available chat history for that specific user */}
